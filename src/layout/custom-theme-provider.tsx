@@ -1,7 +1,7 @@
 import { CSSReset, ThemeProvider } from '@chakra-ui/core';
 import React from 'react';
 
-import { customTheme } from '../data/theme';
+import { customTheme } from '../common/themes/theme';
 
 interface CustomThemeProviderProps {
   children: React.ReactNode;
