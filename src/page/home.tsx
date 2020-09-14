@@ -1,12 +1,22 @@
 import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import './App.css';
+import '../App.css';
 import { State } from '../common/models/todo.interface';
+import {
+  createTodoActionCreator,
+  selectTodoActionCreator,
+  editTodoActionCreator,
+  toggleTodoActionCreator,
+  deleteTodoActionCreator,
+} from '../features/todo/todoSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state: State) => state.todos);
+
+  console.log(todos);
+
   const selectedTodoId = useSelector((state: State) => state.selectedTodo);
   const editedCount = useSelector((state: State) => state.counter);
 
@@ -100,15 +110,16 @@ const HomePage = () => {
       <div className="App__body">
         <ul className="App__list">
           <h2>My Todos:</h2>
-          {todos.map((todo, i) => (
-            <li
-              className={`${todo.isComplete ? 'done' : ''} ${todo.id === selectedTodoId ? 'active' : ''}`}
-              key={todo.id}
-              onClick={handleSelectTodo(todo.id)}
-            >
-              <span className="list-number">{i + 1})</span> {todo.desc}
-            </li>
-          ))}
+          {todos &&
+            todos.map((todo, i) => (
+              <li
+                className={`${todo.isComplete ? 'done' : ''} ${todo.id === selectedTodoId ? 'active' : ''}`}
+                key={todo.id}
+                onClick={handleSelectTodo(todo.id)}
+              >
+                <span className="list-number">{i + 1})</span> {todo.desc}
+              </li>
+            ))}
         </ul>
         <div className="App_todo-info">
           <h2>Selected Todo:</h2>

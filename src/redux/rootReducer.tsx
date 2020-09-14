@@ -1,9 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-
 import { counterSlice, selectedTodoSlice, todoSlice } from '../features/todo/todoSlice';
 
 const rootReducer = combineReducers({
-  todo: todoSlice.reducer,
+  todos: todoSlice.reducer,
   selectedTodo: selectedTodoSlice.reducer,
   counter: counterSlice.reducer,
 });

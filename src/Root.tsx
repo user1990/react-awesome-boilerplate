@@ -5,15 +5,17 @@ import { Normalize } from './components/normalize';
 import CustomThemeProvider from './layout/custom-theme-provider';
 
 import { Provider } from 'react-redux';
-import { Store } from 'redux';
+import store, { RootState } from './redux/store';
 
 interface RootProps {
-  store: Store;
+  store: RootState;
 }
 
 export const Root: React.FC<RootProps> = props => {
+  console.log(props);
+
   return (
-    <Provider store={props.store}>
+    <Provider store={store}>
       <CustomThemeProvider>
         <Normalize />
         <AppRouter {...props} />

@@ -3,7 +3,6 @@ import { v1 as uuid } from 'uuid';
 
 import { Todo } from '../../common/models/todo.interface';
 
-
 // Initial state
 const todoInitialState: Todo[] = [
   {
