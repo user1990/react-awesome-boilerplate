@@ -27,7 +27,10 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </PseudoBox>
           <PseudoBox position="relative" opacity={pathname !== '/form' ? 0.4 : 1}>
-            <Link to="/form">Form</Link>
+            <Link to="/form">Chakra Form</Link>
+          </PseudoBox>
+          <PseudoBox position="relative" opacity={pathname !== '/form' ? 0.4 : 1}>
+            <Link to="/stepper-form">Stepper Form</Link>
           </PseudoBox>
           <PseudoBox position="relative" opacity={pathname !== '/card' ? 0.4 : 1}>
             <Link to="/card">Card</Link>

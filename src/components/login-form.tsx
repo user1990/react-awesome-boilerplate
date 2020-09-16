@@ -22,7 +22,6 @@ const LoginForm = () => (
       <FormHelperText textAlign="center">
         Welcome Home!
         <br />
-        🏠
       </FormHelperText>
     </Stack>
   </form>

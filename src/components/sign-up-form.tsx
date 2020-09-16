@@ -45,7 +45,6 @@ const SignUpForm = () => (
       <FormHelperText textAlign="center">
         We will never share your email!
         <br />
-        🤞🏼
       </FormHelperText>
     </Stack>
   </form>

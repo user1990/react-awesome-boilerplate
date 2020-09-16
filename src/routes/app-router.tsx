@@ -14,10 +14,10 @@ const AppRouter: React.FC<RouterProps> = props => (
     <TopScroller />
     <SiteLayout {...props}>
       <Switch>
-        <Route path="/login">
+        <Route path="/login" exact={true}>
           <LoginPage />
         </Route>
-        <Route path="/">
+        <Route path="/" exact={true}>
           <HomePage />
         </Route>
         {/* <PrivateRoute path="/"> */}

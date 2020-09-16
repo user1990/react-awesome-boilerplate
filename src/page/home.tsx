@@ -15,8 +15,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state: State) => state.todos);
 
-  console.log(todos);
-
   const selectedTodoId = useSelector((state: State) => state.selectedTodo);
   const editedCount = useSelector((state: State) => state.counter);
 

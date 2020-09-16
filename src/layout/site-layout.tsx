@@ -18,7 +18,7 @@ const SiteLayout: React.FC<SiteLayoutProps> = props => {
           <Header {...props} />
         </Flex>
       </Box>
-      <Flex justify="center" align="center" w="100%" h="93vh">
+      <Flex w="100%" h="93vh">
         <>{props.children}</>
       </Flex>
       <Box mb={80}>

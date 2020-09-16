@@ -1,24 +1,24 @@
 import React from 'react';
-
-import AppRouter from './routes/app-router';
-import { Normalize } from './components/normalize';
-import CustomThemeProvider from './layout/custom-theme-provider';
-
 import { Provider } from 'react-redux';
+
+import { Normalize } from './components/normalize';
+import { DataProvider } from './hooks/use-data';
+import CustomThemeProvider from './layout/custom-theme-provider';
 import store, { RootState } from './redux/store';
+import AppRouter from './routes/app-router';
 
 interface RootProps {
   store: RootState;
 }
 
 export const Root: React.FC<RootProps> = props => {
-  console.log(props);
-
   return (
     <Provider store={store}>
       <CustomThemeProvider>
         <Normalize />
-        <AppRouter {...props} />
+        <DataProvider>
+          <AppRouter {...props} />
+        </DataProvider>
       </CustomThemeProvider>
     </Provider>
   );
