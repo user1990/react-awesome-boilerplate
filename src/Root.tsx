@@ -1,26 +1,18 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import 'normalize.css';
 
-import { Normalize } from './components/normalize';
-import { DataProvider } from './hooks/use-data';
-import CustomThemeProvider from './layout/custom-theme-provider';
-import store, { RootState } from './redux/store';
+import React from 'react';
+
+import { GlobalStyles } from './GlobalStyles';
 import AppRouter from './routes/app-router';
 
-interface RootProps {
-  store: RootState;
-}
+interface RootProps {}
 
-export const Root: React.FC<RootProps> = props => {
+export const Root = (props: RootProps) => {
   return (
-    <Provider store={store}>
-      <CustomThemeProvider>
-        <Normalize />
-        <DataProvider>
-          <AppRouter {...props} />
-        </DataProvider>
-      </CustomThemeProvider>
-    </Provider>
+    <>
+      <GlobalStyles />
+      <AppRouter {...props} />
+    </>
   );
 };
 

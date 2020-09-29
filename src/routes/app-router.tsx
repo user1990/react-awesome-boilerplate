@@ -1,27 +1,33 @@
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 
-import { TopScroller } from '../hooks/top-scroller';
-import SiteLayout from '../layout/site-layout';
-import { FormRoutes } from './form-routes';
-import { publicPaths } from './public-routes';
+import { useAuthListener } from '../hooks/use-auth-listener';
+import { privatePaths } from './private-paths';
+import PrivateRoute from './private-route';
+import { publicPaths } from './public-paths';
+import PublicRoute from './public-route';
 
-interface RouterProps {}
+const AppRouter = () => {
+  const { user } = useAuthListener();
 
-const publicRoutes = publicPaths.map(({ path, ...props }) => <Route key={path} path={path} {...props} />);
+  console.log(user);
 
-const AppRouter: React.FC<RouterProps> = props => (
-  <Router>
-    <TopScroller />
-    <SiteLayout {...props}>
+  const publicRoutes = publicPaths.map(({ path, component, ...props }) => (
+    <PublicRoute key={path} user={user} path={path} component={component} {...props} />
+  ));
+  const privateRoutes = privatePaths.map(({ path, component, ...props }) => (
+    <PrivateRoute key={path} user={user} path={path} component={component} {...props} />
+  ));
+
+  return (
+    <Router>
       <Switch>
         {publicRoutes}
-        {/* <PrivateRoute path="/"> */}
-        <FormRoutes {...props} />
+        {privateRoutes}
         <Redirect from="*" to="/" exact={true}></Redirect>
       </Switch>
-    </SiteLayout>
-  </Router>
-);
+    </Router>
+  );
+};
 
 export default AppRouter;
